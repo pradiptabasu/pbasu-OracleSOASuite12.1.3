@@ -1,0 +1,135 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Mon Feb 20 17:44:51 IST 2017
+  Author:  prabasu
+  Type: BPEL 2.0 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="LoginProcess"
+               targetNamespace="http://xmlns.oracle.com/HelloWorldSOA/CallingResponsys_OracleMarketingCloud/LoginProcess"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/HelloWorldSOA/CallingResponsys_OracleMarketingCloud/LoginProcess"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:ui="http://xmlns.oracle.com/soa/designer"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/HelloWorldSOA/CallingResponsys_OracleMarketingCloud/Responsys_OracleMarketingCloud"
+         xmlns:ns2="http://TargetNamespace.com/_Login_response"
+         xmlns:ns4="http://TargetNamespace.com/Responsys_OracleMarketingCloud_Login_request"
+         xmlns:ns3="http://www.example.org"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:ess="http://xmlns.oracle.com/scheduler"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <import ui:processWSDL="true" namespace="http://xmlns.oracle.com/HelloWorldSOA/CallingResponsys_OracleMarketingCloud/LoginProcess" location="../WSDLs/LoginProcess.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="loginprocess_client" partnerLinkType="client:LoginProcess" myRole="LoginProcessProvider"/>
+    <partnerLink name="Responsys_OracleMarketingCloud" partnerLinkType="ns1:Responsys_OracleMarketingCloud"
+                 partnerRole="Responsys_OracleMarketingCloudProvider"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:LoginProcessRequestMessage"/>
+
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable" messageType="client:LoginProcessResponseMessage"/>
+    <variable name="Invoke1_Login_InputVariable" messageType="ns1:Login_inputMessage"/>
+    <variable name="Invoke1_Login_OutputVariable" messageType="ns1:Login_outputMessage"/>
+    <variable name="Authorization" type="xsd:string"/>
+    <variable name="Invoke2_List_InputVariable" messageType="ns1:Rest_EmptyMessage"/>
+    <variable name="Invoke2_List_OutputVariable" messageType="ns1:List_outputMessage"/>
+    <variable name="ServiceBaseURI" type="xsd:string"/>
+  </variables>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in LoginProcess.wsdl) -->
+    <receive name="receiveInput" partnerLink="loginprocess_client" portType="client:LoginProcess" operation="process" variable="inputVariable" createInstance="yes"/>
+    <assign name="Assign1">
+      <copy>
+        <from>$inputVariable.payload/ns3:username</from>
+        <to>$Invoke1_Login_InputVariable.request/ns4:user_name</to>
+      </copy>
+      <copy>
+        <from>$inputVariable.payload/ns3:password</from>
+        <to>$Invoke1_Login_InputVariable.request/ns4:password</to>
+      </copy>
+      <copy>
+        <from>"password"</from>
+        <to>$Invoke1_Login_InputVariable.request/ns4:auth_type</to>
+      </copy>
+    </assign>
+    <invoke name="Invoke1" bpelx:invokeAsDetail="no" partnerLink="Responsys_OracleMarketingCloud"
+            portType="ns1:Responsys_OracleMarketingCloud_ptt" operation="Login"
+            inputVariable="Invoke1_Login_InputVariable" outputVariable="Invoke1_Login_OutputVariable"/>
+    <assign name="Assign2">
+      <copy>
+        <from>$Invoke1_Login_OutputVariable.reply/ns2:authToken</from>
+        <to>$outputVariable.payload/ns2:authToken</to>
+      </copy>
+      <copy>
+        <from>concat($Invoke1_Login_OutputVariable.reply/ns2:endPoint,'/rest/api/v1.1/lists')</from>
+        <to>$ServiceBaseURI</to>
+      </copy>
+      <copy>
+        <from>$Invoke1_Login_OutputVariable.reply/ns2:authToken</from>
+        <to>$Authorization</to>
+      </copy>
+      <copy>
+        <from>$Invoke1_Login_OutputVariable.reply/ns2:issuedAt</from>
+        <to>$outputVariable.payload/ns2:issuedAt</to>
+      </copy>
+      <copy>
+        <from>$Invoke1_Login_OutputVariable.reply/ns2:endPoint</from>
+        <to>$outputVariable.payload/ns2:endPoint</to>
+      </copy>
+    </assign>
+    <invoke name="Invoke2" partnerLink="Responsys_OracleMarketingCloud"
+            portType="ns1:Responsys_OracleMarketingCloud_ptt" operation="List"
+            inputVariable="Invoke2_List_InputVariable" outputVariable="Invoke2_List_OutputVariable"
+            bpelx:invokeAsDetail="no">
+      <bpelx:toProperties>
+        <bpelx:toProperty name="rest.binding.http.Authorization" variable="Authorization"/>
+        <bpelx:toProperty name="rest.binding.requestURI" variable="ServiceBaseURI"/>
+      </bpelx:toProperties>
+    </invoke>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="loginprocess_client" portType="client:LoginProcess" operation="process" variable="outputVariable"/>
+  </sequence>
+</process>

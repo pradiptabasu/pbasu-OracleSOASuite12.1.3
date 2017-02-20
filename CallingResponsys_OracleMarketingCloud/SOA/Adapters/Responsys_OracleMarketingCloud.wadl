@@ -1,0 +1,40 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<application xmlns:soa="http://www.oracle.com/soa/rest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://xmlns.oracle.com/HelloWorldSOA/CallingResponsys_OracleMarketingCloud/Responsys_OracleMarketingCloud" xmlns="http://wadl.dev.java.net/2009/02">
+   <doc title="Responsys_OracleMarketingCloud">RestReference</doc>
+   <grammars>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://TargetNamespace.com/Responsys_OracleMarketingCloud_Login_request" schemaLocation="../Schemas/Responsys_Login_Request.xsd"/>
+        </xsd:schema>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://TargetNamespace.com/_Login_response" schemaLocation="../Schemas/Responsys_Login_Response.xsd"/>
+        </xsd:schema>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xmlns.oracle.com/HelloWorldSOA/CallingResponsys_OracleMarketingCloud/Responsys_OracleMarketingCloud" elementFormDefault="qualified">
+            <element name="empty">
+                <complexType/>
+            </element>
+        </schema>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://TargetNamespace.com/Responsys_OracleMarketingCloud_List_response" schemaLocation="../Schemas/Responsys_List_Response.xsd"/>
+        </xsd:schema>
+   </grammars>
+   <resources>
+      <resource path="/rest/api/v1/auth/token">
+         <method name="POST" soa:wsdlOperation="Login">
+            <request>
+               <representation mediaType="application/x-www-form-urlencoded" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Responsys_OracleMarketingCloud_Login_request"/>
+            </request>
+            <response status="200">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/_Login_response"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="/rest/api/v1.1/lists">
+         <method name="GET" soa:wsdlOperation="List">
+            <request/>
+            <response status="200">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Responsys_OracleMarketingCloud_List_response"/>
+            </response>
+         </method>
+      </resource>
+   </resources>
+</application>

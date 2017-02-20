@@ -1,0 +1,1 @@
+http://login5.responsys.net/rest/api/v1/auth/token

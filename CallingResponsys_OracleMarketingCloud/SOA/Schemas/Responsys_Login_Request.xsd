@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd" xmlns:tns="http://TargetNamespace.com/Responsys_OracleMarketingCloud_Login_request" targetNamespace="http://TargetNamespace.com/Responsys_OracleMarketingCloud_Login_request" elementFormDefault="qualified" attributeFormDefault="unqualified" nxsd:encoding="US-ASCII">
+
+
+  <xsd:element name="Root-Element">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="user_name" type="xsd:string"/>
+        <xsd:element name="password" type="xsd:string"/>
+        <xsd:element name="auth_type" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+<xsd:annotation>
+      <xsd:appinfo>NXSDSAMPLE=</xsd:appinfo>
+      <xsd:appinfo>USEHEADER=false</xsd:appinfo>
+   </xsd:annotation>
+</xsd:schema>

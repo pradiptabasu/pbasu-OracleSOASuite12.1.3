@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<application xmlns:soa="http://www.oracle.com/soa/rest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://xmlns.oracle.com/HelloWorldSOA/ReadJSessionID/RestReference" xmlns="http://wadl.dev.java.net/2009/02">
+   <doc title="RestReference">RestReference</doc>
+   <grammars>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://schemas.xmlsoap.org/soap/envelope/" schemaLocation="../Schemas/SOAPWrapper.xsd"/>
+        </xsd:schema>
+   </grammars>
+   <resources>
+      <resource path="/StatefulServiceClassPort">
+         <method name="POST" soa:wsdlOperation="Operation1">
+            <request>
+               <representation mediaType="application/xml" element="cns:Envelope" xmlns:cns="http://schemas.xmlsoap.org/soap/envelope/"/>
+            </request>
+            <response status="200">
+               <representation mediaType="application/xml" element="cns:Envelope" xmlns:cns="http://schemas.xmlsoap.org/soap/envelope/"/>
+            </response>
+         </method>
+      </resource>
+   </resources>
+</application>

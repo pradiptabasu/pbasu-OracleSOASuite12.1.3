@@ -1,0 +1,38 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="StatefulProcessor"
+     targetNamespace="http://xmlns.oracle.com/HelloWorldSOA/ReadJSessionID/StatefulProcessor"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:client="http://xmlns.oracle.com/HelloWorldSOA/ReadJSessionID/StatefulProcessor"
+     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+     xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/"
+    >
+    <plnk:partnerLinkType name="StatefulProcessor">
+        <plnk:role name="StatefulProcessorProvider" portType="client:StatefulProcessor"/>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:client="http://xmlns.oracle.com/HelloWorldSOA/ReadJSessionID/StatefulProcessor"
+             xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/">
+            <import namespace="http://xmlns.oracle.com/HelloWorldSOA/ReadJSessionID/StatefulProcessor"
+                 schemaLocation="../Schemas/StatefulProcessor.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:client="http://xmlns.oracle.com/HelloWorldSOA/ReadJSessionID/StatefulProcessor"
+             xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/">
+            <xsd:import namespace="http://schemas.xmlsoap.org/soap/envelope/" schemaLocation="../Schemas/SOAPWrapper.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="StatefulProcessorRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:message name="StatefulProcessorResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="StatefulProcessor">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:StatefulProcessorRequestMessage"/>
+            <wsdl:output message="client:StatefulProcessorResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

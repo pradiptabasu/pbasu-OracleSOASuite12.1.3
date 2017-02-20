@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:reference[@name='httpReference']</loc>
+      <line>64</line>
+      <col>78</col>
+      <file>D:\WorkSpace\JDEV_1213_PoC\HelloWorldSOA\ReadJSessionID\SOA\composite.xml</file>
+      <name>D:\WorkSpace\JDEV_1213_PoC\HelloWorldSOA\ReadJSessionID\SOA\composite.xml</name>
+      <fix/>
+      <msg>Failed to Find Binding "httpReference":"{http://xmlns.oracle.com/pcbpel/adapter/http/HelloWorldSOA/ReadJSessionID/httpReference}Request_Response_pt" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:reference[@name='StatefulSOAPService']</loc>
+      <line>50</line>
+      <col>95</col>
+      <file>D:\WorkSpace\JDEV_1213_PoC\HelloWorldSOA\ReadJSessionID\SOA\composite.xml</file>
+      <name>D:\WorkSpace\JDEV_1213_PoC\HelloWorldSOA\ReadJSessionID\SOA\composite.xml</name>
+      <fix/>
+      <msg>Failed to Find Binding "StatefulSOAPService":"{http://soap.stateful.pradipta.com/}StatefulServiceClassPort" in WSDL Manager</msg>
+   </Fault>
+</Faults>

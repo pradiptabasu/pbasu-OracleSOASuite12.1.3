@@ -1,0 +1,149 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Feb 15 15:24:33 IST 2017
+  Author:  prabasu
+  Type: BPEL 2.0 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="StatefulProcessor"
+               targetNamespace="http://xmlns.oracle.com/HelloWorldSOA/ReadJSessionID/StatefulProcessor"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/HelloWorldSOA/ReadJSessionID/StatefulProcessor"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:ui="http://xmlns.oracle.com/soa/designer"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://soap.stateful.pradipta.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:ns2="http://schemas.xmlsoap.org/soap/envelope/"
+         xmlns:ns3="http://xmlns.oracle.com/HelloWorldSOA/ReadJSessionID/RestReference"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:ess="http://xmlns.oracle.com/scheduler"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns4="http://xmlns.oracle.com/pcbpel/adapter/http/HelloWorldSOA/ReadJSessionID/httpReference">
+  <import namespace="http://schemas.xmlsoap.org/soap/envelope/" location="../Schemas/SOAPWrapper.xsd"
+          importType="http://www.w3.org/2001/XMLSchema"/>
+  <import ui:processWSDL="true" namespace="http://xmlns.oracle.com/HelloWorldSOA/ReadJSessionID/StatefulProcessor" location="../WSDLs/StatefulProcessor.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="statefulprocessor_client" partnerLinkType="client:StatefulProcessor" myRole="StatefulProcessorProvider"/>
+    <partnerLink name="StatefulSOAPService" partnerLinkType="ns1:StatefulSOAPService"
+                 partnerRole="StatefulServiceClassPortType"/>
+    <partnerLink name="RestReference" partnerLinkType="ns3:RestReference" partnerRole="RestReferenceProvider"/>
+    <partnerLink name="httpReference" partnerLinkType="ns4:Request_Response_plt" partnerRole="Request-Response_role"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:StatefulProcessorRequestMessage"/>
+
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable" messageType="client:StatefulProcessorResponseMessage"/>
+    <variable name="Invoke1_HelloWorld_InputVariable" messageType="ns1:HelloWorld"/>
+    <variable name="Invoke1_HelloWorld_OutputVariable" messageType="ns1:HelloWorldResponse"/>
+    <variable name="JSessionID" type="xsd:string"/>
+    <variable name="Request" element="ns2:Envelope"/>
+    <variable name="Response" element="ns2:Envelope"/>
+    <variable name="Invoke2_Request-Response_InputVariable" messageType="ns4:Envelope_msg_in"/>
+    <variable name="Invoke2_Request-Response_OutputVariable" messageType="ns4:Envelope_msg_out"/>
+  </variables>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in StatefulProcessor.wsdl) -->
+    <receive name="receiveInput" partnerLink="statefulprocessor_client" portType="client:StatefulProcessor" operation="process" variable="inputVariable" createInstance="yes"/>
+    <assign name="Assign1">
+      <copy>
+        <from>$inputVariable.payload/client:input</from>
+        <to>$Invoke1_HelloWorld_InputVariable.parameters/arg0</to>
+      </copy>
+    </assign>
+    <assign name="Request_Transformation">
+      <bpelx:annotation>
+        <bpelx:pattern patternName="bpelx:transformation"></bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from>ora:doXSLTransformForDoc("../Transformations/Request_Transformation.xsl", $Invoke1_HelloWorld_InputVariable.parameters)</from>
+        <to variable="Request"/>
+      </copy>
+    </assign>
+    <assign name="Assign3">
+      <copy>
+        <from>$Request</from>
+        <to>$Invoke2_Request-Response_InputVariable.Envelope</to>
+      </copy>
+    </assign>
+    <invoke name="Invoke1" bpelx:invokeAsDetail="no" partnerLink="StatefulSOAPService"
+            portType="ns1:StatefulServiceClassPortType" operation="HelloWorld"
+            inputVariable="Invoke1_HelloWorld_InputVariable" outputVariable="Invoke1_HelloWorld_OutputVariable">
+      <bpelx:fromProperties>
+        <bpelx:fromProperty name="Set-Cookie" variable="JSessionID"/>
+      </bpelx:fromProperties>
+    </invoke>
+    <invoke name="Invoke2" partnerLink="httpReference" portType="ns4:Request_Response_ptt"
+            operation="Request-Response" inputVariable="Invoke2_Request-Response_InputVariable"
+            outputVariable="Invoke2_Request-Response_OutputVariable" bpelx:invokeAsDetail="no">
+      <bpelx:fromProperties>
+        <bpelx:fromProperty name="rest.binding.http.Cookie" variable="JSessionID"/>
+        <bpelx:fromProperty name="Set-Cookie" variable="JSessionID"/>
+        <bpelx:fromProperty name="rest.binding.http.Set-Cookie" variable="JSessionID"/>
+      </bpelx:fromProperties>
+    </invoke>
+    <assign name="Assign4">
+      <copy>
+        <from>$Invoke2_Request-Response_OutputVariable.Envelope</from>
+        <to>$Response</to>
+      </copy>
+    </assign>
+    <assign name="Response_Transformation">
+      <bpelx:annotation>
+        <bpelx:pattern patternName="bpelx:transformation"></bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from>ora:doXSLTransformForDoc("../Transformations/Response_Transformation.xsl", $Response)</from>
+        <to variable="Invoke1_HelloWorld_OutputVariable" part="parameters"/>
+      </copy>
+    </assign>
+    <assign name="Assign2">
+      <copy>
+        <from>$JSessionID</from>
+        <to>$Invoke1_HelloWorld_OutputVariable.parameters/return</to>
+      </copy>
+    </assign>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="statefulprocessor_client" portType="client:StatefulProcessor" operation="process" variable="outputVariable"/>
+  </sequence>
+</process>

@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dgm:gDiagram xmlns:dgm="http://xmlns.oracle.com/sca/soadgm">
+    <dgm:gService name="bpel_insert_nonxajdbc_nonxaeis_client_ep">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="977" width="137" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="970" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="bpel_insert_nonxajdbc_nonxaeis_client_ep" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/HelloWorldSOA/DataBaseOperations/BPEL_insert_nonXAjdbc_nonXAeis#wsdl.interface(BPEL_insert_nonXAjdbc_nonXAeis)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gService name="rest_nonxajdbc_nonxaeis">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="859" width="137" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="852" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="rest_nonxajdbc_nonxaeis" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/HelloWorldSOA/DataBaseOperations/BPEL_insert_nonXAjdbc_nonXAeis#wsdl.interface(BPEL_insert_nonXAjdbc_nonXAeis)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/RestAdapterService20x20px.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gService name="bpel_insert_xajdbc_xaeis_client_ep">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="743" width="137" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="736" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="bpel_insert_xajdbc_xaeis_client_ep" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/HelloWorldSOA/DataBaseOperations/BPEL_insert_XAjdbc_XAeis#wsdl.interface(BPEL_insert_XAjdbc_XAeis)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gService name="rest_xajdbc_xaeis">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="625" width="137" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="618" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="rest_xajdbc_xaeis" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/HelloWorldSOA/DataBaseOperations/BPEL_insert_XAjdbc_XAeis#wsdl.interface(BPEL_insert_XAjdbc_XAeis)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/RestAdapterService20x20px.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gService name="bpel_xajdbc_nonxaeis_client_ep">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="509" width="137" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="502" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="bpel_xajdbc_nonxaeis_client_ep" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/HelloWorldSOA/DataBaseOperations/BPEL_XAjdbc_nonXAeis#wsdl.interface(BPEL_XAjdbc_nonXAeis)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gService name="bpel_nonxajdbc_xaeis_client_ep">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="275" width="137" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="268" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="bpel_nonxajdbc_xaeis_client_ep" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/HelloWorldSOA/DataBaseOperations/BPEL_nonXAjdbc_XAeis#wsdl.interface(BPEL_nonXAjdbc_XAeis)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gService name="rest_nonxajdbc_xaeis">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="157" width="137" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="150" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="rest_nonxajdbc_xaeis" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/HelloWorldSOA/DataBaseOperations/BPEL_nonXAjdbc_XAeis#wsdl.interface(BPEL_nonXAjdbc_XAeis)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/RestAdapterService20x20px.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gService name="rest_xajdbc_nonxaeis">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="391" width="137" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="384" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="rest_xajdbc_nonxaeis" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/HelloWorldSOA/DataBaseOperations/BPEL_XAjdbc_nonXAeis#wsdl.interface(BPEL_XAjdbc_nonXAeis)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/RestAdapterService20x20px.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>process</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gService name="DB_POLL_UPDT_SEQ_TBL">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="41" width="137" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="34" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="DB_POLL_UPDT_SEQ_TBL" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/HelloWorldSOA/DataBaseOperations/DB_POLL_UPDT_SEQ_TBL#wsdl.interface(DB_POLL_UPDT_SEQ_TBL_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>receive</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gReference name="DB_insert_nonXAjdbc_nonXAeis">
+        <dgm:body borderWidth="2" arcRad="20" X="686" Y="918" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="676" Y="911" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="DB_insert_nonXAjdbc_nonXAeis" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/HelloWorldSOA/DataBaseOperations/DB_insert_nonXAjdbc_nonXAeis#wsdl.interface(DB_insert_nonXAjdbc_nonXAeis_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>insert</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="DB_insert_nonXAjdbc_XAeis">
+        <dgm:body borderWidth="2" arcRad="20" X="686" Y="216" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="676" Y="209" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="DB_insert_nonXAjdbc_XAeis" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/HelloWorldSOA/DataBaseOperations/DB_insert_nonXAjdbc_XAeis#wsdl.interface(DB_insert_nonXAjdbc_XAeis_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>insert</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="DB_insert_XAjdbc_nonXAeis">
+        <dgm:body borderWidth="2" arcRad="20" X="686" Y="450" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="676" Y="443" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="DB_insert_XAjdbc_nonXAeis" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/HelloWorldSOA/DataBaseOperations/DB_insert_XAjdbc_nonXAeis#wsdl.interface(DB_insert_XAjdbc_nonXAeis_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>insert</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="DB_insert_XAjdbc_XAeis">
+        <dgm:body borderWidth="2" arcRad="20" X="686" Y="684" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="676" Y="677" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="DB_insert_XAjdbc_XAeis" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/HelloWorldSOA/DataBaseOperations/DB_insert_XAjdbc_XAeis#wsdl.interface(DB_insert_XAjdbc_XAeis_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/db_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>insert</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gReference name="dummy_SCM_MFG_WO_Payload">
+        <dgm:body borderWidth="2" arcRad="20" X="686" Y="41" width="136" height="84">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="676" Y="34" width="156" height="98">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="dummy_SCM_MFG_WO_Payload" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/jms/HelloWorldSOA/DataBaseOperations/dummy_SCM_MFG_WO_Payload#wsdl.interface(Produce_Message_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/jms_adapter_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>Produce_Message</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gComponent name="BPEL_insert_nonXAjdbc_nonXAeis">
+        <dgm:body borderWidth="2" arcRad="20" X="241" Y="929" width="130" height="61">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="231" Y="922" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="bpel_insert_nonxajdbc_nonxaeis_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/HelloWorldSOA/DataBaseOperations/BPEL_insert_nonXAjdbc_nonXAeis#wsdl.interface(BPEL_insert_nonXAjdbc_nonXAeis)"/>
+        <dgm:outputPort name="DB_insert_nonXAjdbc_nonXAeis" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/HelloWorldSOA/DataBaseOperations/DB_insert_nonXAjdbc_nonXAeis#wsdl.interface(DB_insert_nonXAjdbc_nonXAeis_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="BPEL_insert_XAjdbc_XAeis">
+        <dgm:body borderWidth="2" arcRad="20" X="241" Y="695" width="130" height="61">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="231" Y="688" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="bpel_insert_xajdbc_xaeis_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/HelloWorldSOA/DataBaseOperations/BPEL_insert_XAjdbc_XAeis#wsdl.interface(BPEL_insert_XAjdbc_XAeis)"/>
+        <dgm:outputPort name="DB_insert_XAjdbc_XAeis" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/HelloWorldSOA/DataBaseOperations/DB_insert_XAjdbc_XAeis#wsdl.interface(DB_insert_XAjdbc_XAeis_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="BPEL_XAjdbc_nonXAeis">
+        <dgm:body borderWidth="2" arcRad="20" X="241" Y="461" width="130" height="61">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="231" Y="454" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="bpel_xajdbc_nonxaeis_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/HelloWorldSOA/DataBaseOperations/BPEL_XAjdbc_nonXAeis#wsdl.interface(BPEL_XAjdbc_nonXAeis)"/>
+        <dgm:outputPort name="DB_insert_XAjdbc_nonXAeis" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/HelloWorldSOA/DataBaseOperations/DB_insert_XAjdbc_nonXAeis#wsdl.interface(DB_insert_XAjdbc_nonXAeis_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="BPEL_nonXAjdbc_XAeis">
+        <dgm:body borderWidth="2" arcRad="20" X="241" Y="227" width="130" height="61">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="231" Y="220" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="bpel_nonxajdbc_xaeis_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/HelloWorldSOA/DataBaseOperations/BPEL_nonXAjdbc_XAeis#wsdl.interface(BPEL_nonXAjdbc_XAeis)"/>
+        <dgm:outputPort name="DB_insert_nonXAjdbc_XAeis" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/HelloWorldSOA/DataBaseOperations/DB_insert_nonXAjdbc_XAeis#wsdl.interface(DB_insert_nonXAjdbc_XAeis_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="poll_n_push">
+        <dgm:body borderWidth="2" arcRad="20" X="439" Y="26" width="130" height="61">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="429" Y="19" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="DB_POLL_UPDT_SEQ_TBL" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/db/HelloWorldSOA/DataBaseOperations/DB_POLL_UPDT_SEQ_TBL#wsdl.interface(DB_POLL_UPDT_SEQ_TBL_ptt)"/>
+        <dgm:outputPort name="dummy_SCM_MFG_WO_Payload" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/jms/HelloWorldSOA/DataBaseOperations/dummy_SCM_MFG_WO_Payload#wsdl.interface(Produce_Message_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gWireLink source="bpel_insert_nonxajdbc_nonxaeis_client_ep" target="BPEL_insert_nonXAjdbc_nonXAeis/bpel_insert_nonxajdbc_nonxaeis_client" width="2">
+        <dgm:gSegment X1="168" Y1="987" X2="192" Y2="987"/>
+        <dgm:gSegment X1="192" Y1="987" X2="192" Y2="954"/>
+        <dgm:gSegment X1="192" Y1="954" X2="231" Y2="954"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="BPEL_insert_nonXAjdbc_nonXAeis/DB_insert_nonXAjdbc_nonXAeis" target="DB_insert_nonXAjdbc_nonXAeis" width="2">
+        <dgm:gSegment X1="381" Y1="954" X2="405" Y2="954"/>
+        <dgm:gSegment X1="405" Y1="954" X2="405" Y2="928"/>
+        <dgm:gSegment X1="405" Y1="928" X2="676" Y2="928"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="rest_nonxajdbc_nonxaeis" target="BPEL_insert_nonXAjdbc_nonXAeis/bpel_insert_nonxajdbc_nonxaeis_client" width="2">
+        <dgm:gSegment X1="168" Y1="869" X2="207" Y2="869"/>
+        <dgm:gSegment X1="207" Y1="869" X2="207" Y2="954"/>
+        <dgm:gSegment X1="207" Y1="954" X2="231" Y2="954"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="bpel_insert_xajdbc_xaeis_client_ep" target="BPEL_insert_XAjdbc_XAeis/bpel_insert_xajdbc_xaeis_client" width="2">
+        <dgm:gSegment X1="168" Y1="753" X2="192" Y2="753"/>
+        <dgm:gSegment X1="192" Y1="753" X2="192" Y2="720"/>
+        <dgm:gSegment X1="192" Y1="720" X2="231" Y2="720"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="BPEL_insert_XAjdbc_XAeis/DB_insert_XAjdbc_XAeis" target="DB_insert_XAjdbc_XAeis" width="2">
+        <dgm:gSegment X1="381" Y1="720" X2="405" Y2="720"/>
+        <dgm:gSegment X1="405" Y1="720" X2="405" Y2="694"/>
+        <dgm:gSegment X1="405" Y1="694" X2="676" Y2="694"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="rest_xajdbc_xaeis" target="BPEL_insert_XAjdbc_XAeis/bpel_insert_xajdbc_xaeis_client" width="2">
+        <dgm:gSegment X1="168" Y1="635" X2="207" Y2="635"/>
+        <dgm:gSegment X1="207" Y1="635" X2="207" Y2="720"/>
+        <dgm:gSegment X1="207" Y1="720" X2="231" Y2="720"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="bpel_xajdbc_nonxaeis_client_ep" target="BPEL_XAjdbc_nonXAeis/bpel_xajdbc_nonxaeis_client" width="2">
+        <dgm:gSegment X1="168" Y1="519" X2="192" Y2="519"/>
+        <dgm:gSegment X1="192" Y1="519" X2="192" Y2="486"/>
+        <dgm:gSegment X1="192" Y1="486" X2="231" Y2="486"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="BPEL_XAjdbc_nonXAeis/DB_insert_XAjdbc_nonXAeis" target="DB_insert_XAjdbc_nonXAeis" width="2">
+        <dgm:gSegment X1="381" Y1="486" X2="405" Y2="486"/>
+        <dgm:gSegment X1="405" Y1="486" X2="405" Y2="460"/>
+        <dgm:gSegment X1="405" Y1="460" X2="676" Y2="460"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="bpel_nonxajdbc_xaeis_client_ep" target="BPEL_nonXAjdbc_XAeis/bpel_nonxajdbc_xaeis_client" width="2">
+        <dgm:gSegment X1="168" Y1="285" X2="192" Y2="285"/>
+        <dgm:gSegment X1="192" Y1="285" X2="192" Y2="252"/>
+        <dgm:gSegment X1="192" Y1="252" X2="231" Y2="252"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="BPEL_nonXAjdbc_XAeis/DB_insert_nonXAjdbc_XAeis" target="DB_insert_nonXAjdbc_XAeis" width="2">
+        <dgm:gSegment X1="381" Y1="252" X2="405" Y2="252"/>
+        <dgm:gSegment X1="405" Y1="252" X2="405" Y2="226"/>
+        <dgm:gSegment X1="405" Y1="226" X2="676" Y2="226"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="rest_nonxajdbc_xaeis" target="BPEL_nonXAjdbc_XAeis/bpel_nonxajdbc_xaeis_client" width="2">
+        <dgm:gSegment X1="168" Y1="167" X2="207" Y2="167"/>
+        <dgm:gSegment X1="207" Y1="167" X2="207" Y2="252"/>
+        <dgm:gSegment X1="207" Y1="252" X2="231" Y2="252"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="rest_xajdbc_nonxaeis" target="BPEL_XAjdbc_nonXAeis/bpel_xajdbc_nonxaeis_client" width="2">
+        <dgm:gSegment X1="168" Y1="401" X2="207" Y2="401"/>
+        <dgm:gSegment X1="207" Y1="401" X2="207" Y2="486"/>
+        <dgm:gSegment X1="207" Y1="486" X2="231" Y2="486"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="DB_POLL_UPDT_SEQ_TBL" target="poll_n_push/DB_POLL_UPDT_SEQ_TBL" width="2">
+        <dgm:gSegment X1="168" Y1="51" X2="429" Y2="51"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="poll_n_push/dummy_SCM_MFG_WO_Payload" target="dummy_SCM_MFG_WO_Payload" width="2">
+        <dgm:gSegment X1="579" Y1="51" X2="676" Y2="51"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+</dgm:gDiagram>

@@ -1,0 +1,28 @@
+<wsdl:definitions
+     name="DB_insert_XAjdbc_XAeis"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/HelloWorldSOA/DataBaseOperations/DB_insert_XAjdbc_XAeis"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/HelloWorldSOA/DataBaseOperations/DB_insert_XAjdbc_XAeis"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/DB_insert_XAjdbc_XAeis"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+  <plt:partnerLinkType name="DB_insert_XAjdbc_XAeis_plt" >
+    <plt:role name="DB_insert_XAjdbc_XAeis_role" >
+      <plt:portType name="tns:DB_insert_XAjdbc_XAeis_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/DB_insert_XAjdbc_XAeis" schemaLocation="../Schemas/DB_insert_XAjdbc_XAeis_table.xsd" />
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="TempempCollection_msg">
+        <wsdl:part name="TempempCollection" element="top:TempempCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="DB_insert_XAjdbc_XAeis_ptt">
+        <wsdl:operation name="insert">
+            <wsdl:input message="tns:TempempCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

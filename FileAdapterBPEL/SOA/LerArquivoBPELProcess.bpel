@@ -1,0 +1,127 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Thu Jun 11 15:36:50 BRT 2015
+  Author:  stp
+  Type: BPEL 2.0 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="LerArquivoBPELProcess"
+               targetNamespace="http://xmlns.oracle.com/UansBlogApplication/FileAdapterBPEL/LerArquivoBPELProcess"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/UansBlogApplication/FileAdapterBPEL/LerArquivoBPELProcess"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/file/UansBlogApplication/FileAdapterBPEL/LerArquivo"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/file/UansBlogApplication/FileAdapterBPEL/CapturaArquivo"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ui="http://xmlns.oracle.com/soa/designer">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <import namespace="http://xmlns.oracle.com/pcbpel/adapter/file/UansBlogApplication/FileAdapterBPEL/LerArquivo"
+          location="LerArquivo.wsdl" importType="http://schemas.xmlsoap.org/wsdl/" ui:processWSDL="true"/>
+  <partnerLinks>
+    <partnerLink name="LerArquivo" partnerLinkType="ns1:SynchRead_plt"
+                 partnerRole="SynchRead_role"/>
+    <partnerLink name="CapturaArquivo" partnerLinkType="ns2:Read_plt"
+                 myRole="Read_role"/>
+  </partnerLinks>
+  <variables>
+    <variable name="ReceiveCapturaArquivo_Read_InputVariable"
+              messageType="ns2:Read_msg"/>
+    <variable name="dir" type="xsd:string"/>
+    <variable name="file" type="xsd:string"/>
+    <variable name="isEOF" type="xsd:string"/>
+    <variable name="lineNumber" type="xsd:string"/>
+    <variable name="columnNumber" type="xsd:string"/>
+    <variable name="noDataFound" type="xsd:string"/>
+    <variable name="InvokeLerArquivo_SynchRead_InputVariable"
+              messageType="ns1:Empty_msg"/>
+    <variable name="InvokeLerArquivo_SynchRead_OutputVariable"
+              messageType="ns1:SynchRead_msg"/>
+    <variable name="isMessageRejected" type="xsd:string"/>
+    <variable name="rejectionReason" type="xsd:string"/>
+  </variables>
+  <sequence name="main">
+    <receive name="ReceiveCapturaArquivo" createInstance="yes"
+             partnerLink="CapturaArquivo" portType="ns2:Read_ptt"
+             operation="Read"
+             variable="ReceiveCapturaArquivo_Read_InputVariable">
+      <bpelx:fromProperties>
+        <bpelx:fromProperty name="jca.file.FileName" variable="file"/>
+        <bpelx:fromProperty name="jca.file.Directory" variable="dir"/>
+      </bpelx:fromProperties>
+    </receive>
+    <assign name="IniciaVariaveis">
+      <copy>
+        <from>'false'</from>
+        <to>$isEOF</to>
+      </copy>
+      <copy>
+        <from>1</from>
+        <to>$lineNumber</to>
+      </copy>
+      <copy>
+        <from>1</from>
+        <to>$columnNumber</to>
+      </copy>
+    </assign>
+    <while name="LendoArquivo">
+      <condition>$isEOF = 'false'</condition>
+      <sequence name="Sequence1">
+        <invoke name="InvokeLerArquivo" partnerLink="LerArquivo"
+                portType="ns1:SynchRead_ptt" operation="SynchRead"
+                inputVariable="InvokeLerArquivo_SynchRead_InputVariable"
+                outputVariable="InvokeLerArquivo_SynchRead_OutputVariable"
+                bpelx:invokeAsDetail="no">
+          <bpelx:toProperties>
+            <bpelx:toProperty name="jca.file.FileName" variable="file"/>
+            <bpelx:toProperty name="jca.file.Directory" variable="dir"/>
+            <bpelx:toProperty name="jca.file.LineNumber" variable="lineNumber"/>
+            <bpelx:toProperty name="jca.file.ColumnNumber"
+                              variable="columnNumber"/>
+          </bpelx:toProperties>
+          <bpelx:fromProperties>
+            <bpelx:fromProperty name="jca.file.LineNumber"
+                                variable="lineNumber"/>
+            <bpelx:fromProperty name="jca.file.ColumnNumber"
+                                variable="columnNumber"/>
+            <bpelx:fromProperty name="jca.file.IsEOF" variable="isEOF"/>
+            <bpelx:fromProperty name="jca.file.IsMessageRejected"
+                                variable="isMessageRejected"/>
+            <bpelx:fromProperty name="jca.file.RejectionReason"
+                                variable="rejectionReason"/>
+            <bpelx:fromProperty name="jca.file.NoDataFound"
+                                variable="noDataFound"/>
+          </bpelx:fromProperties>
+        </invoke>
+        <if name="DadosEncontrados">
+          <condition>$noDataFound = 'false'</condition>
+          <empty name="DadosProcessados"/>
+          <else>
+            <empty name="DadosNaoEncontrados"/>
+          </else>
+        </if>
+      </sequence>
+    </while>
+  </sequence>
+</process>

@@ -1,0 +1,14 @@
+<adapter-config name="DB_insert_nonXAjdbc_XAeis" adapter="db" wsdlLocation="../WSDLs/DB_insert_nonXAjdbc_XAeis.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIConnectionName="oa8104.us.oracle.com" location="jdbc/testnonXAdatabaseToXAEIS"/>
+  <endpoint-interaction portType="DB_insert_nonXAjdbc_XAeis_ptt" operation="insert">
+    <interaction-spec className="oracle.tip.adapter.db.DBWriteInteractionSpec">
+      <property name="DescriptorName" value="DB_insert_nonXAjdbc_XAeis.Tempemp"/>
+      <property name="DmlType" value="insert"/>
+      <property name="MappingsMetaDataURL" value="DB_insert_nonXAjdbc_XAeis-or-mappings.xml"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+      <property name="DetectOmissions" value="true"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

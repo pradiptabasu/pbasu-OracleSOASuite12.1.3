@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd"
+            xmlns:tns="http:/uanscarvalho/blog/ArquivoFile"
+            targetNamespace="http:/uanscarvalho/blog/ArquivoFile"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified"
+
+            nxsd:version="NXSD"
+            nxsd:stream="chars"
+            nxsd:encoding="US-ASCII"
+>
+
+
+  <xsd:element name="Arquivo">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Arquivo" minOccurs="1" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="header" type="xsd:string" nxsd:style="fixedLength" nxsd:length="5" />
+              <xsd:element name="detail" type="xsd:string" nxsd:style="fixedLength" nxsd:length="5" />
+              <xsd:element name="detail" type="xsd:string" nxsd:style="fixedLength" nxsd:length="9" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

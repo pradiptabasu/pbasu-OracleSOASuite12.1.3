@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="BPEL_nonXAjdbc_XAeis"
+             targetNamespace="http://xmlns.oracle.com/HelloWorldSOA/DataBaseOperations/BPEL_nonXAjdbc_XAeis"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:client="http://xmlns.oracle.com/HelloWorldSOA/DataBaseOperations/BPEL_nonXAjdbc_XAeis"
+             xmlns:ns1="http://www.example.org"
+             xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	TYPE DEFINITION - List of services participating in this BPEL process
+	The default output of the BPEL designer uses strings as input and 
+	output to the BPEL Process. But you can define or import any XML 
+	Schema type and use them as part of the message types.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->   
+	<wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://www.example.org" schemaLocation="../Schemas/PayloadDefination.xsd" />
+		</schema>
+	</wsdl:types>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	MESSAGE TYPE DEFINITION - Definition of the message types used as 
+	part of the port type defintions
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->      
+	<wsdl:message name="BPEL_nonXAjdbc_XAeisRequestMessage">
+		<wsdl:part name="payload" element="ns1:request" />
+	</wsdl:message>
+	<wsdl:message name="BPEL_nonXAjdbc_XAeisResponseMessage">
+		<wsdl:part name="payload" element="ns1:response" />
+	</wsdl:message>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PORT TYPE DEFINITION - A port type groups a set of operations into
+	a logical service unit.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+	<!-- portType implemented by the BPEL_nonXAjdbc_XAeis BPEL process -->
+	<wsdl:portType name="BPEL_nonXAjdbc_XAeis">
+		<wsdl:operation name="process">
+			<wsdl:input  message="client:BPEL_nonXAjdbc_XAeisRequestMessage" />
+			<wsdl:output message="client:BPEL_nonXAjdbc_XAeisResponseMessage"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PARTNER LINK TYPE DEFINITION
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --> 
+	<plnk:partnerLinkType name="BPEL_nonXAjdbc_XAeis">
+		<plnk:role name="BPEL_nonXAjdbc_XAeisProvider" portType="client:BPEL_nonXAjdbc_XAeis"/>
+	</plnk:partnerLinkType>
+</wsdl:definitions>

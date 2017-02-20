@@ -1,0 +1,23 @@
+<adapter-config name="DB_POLL_UPDT_SEQ_TBL" adapter="db" wsdlLocation="../WSDLs/DB_POLL_UPDT_SEQ_TBL.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIConnectionName="oa8104-DUMMY_SCM_MFG_USER" location="eis/DB/DB_POLL_UPDT_SEQ_TBL"/>
+  <endpoint-activation portType="DB_POLL_UPDT_SEQ_TBL_ptt" operation="receive">
+    <activation-spec className="oracle.tip.adapter.db.DBActivationSpec">
+      <property name="DescriptorName" value="DB_POLL_UPDT_SEQ_TBL.PollingTable"/>
+      <property name="QueryName" value="DB_POLL_UPDT_SEQ_TBLSelect"/>
+      <property name="MappingsMetaDataURL" value="DB_POLL_UPDT_SEQ_TBL-or-mappings.xml"/>
+      <property name="PollingStrategy" value="SequencingPollingStrategy"/>
+      <property name="SequencingTable" value="SEQUENCE_TABLE"/>
+      <property name="SequencingColumn" value="LAST_UPDATED_TIME"/>
+      <property name="SequencingTableKeyColumn" value="POLL_TBL_NAME"/>
+      <property name="SequencingTableValueColumn" value="LAST_UPDATE"/>
+      <property name="SequencingTableKey" value="POLLING_TABLE"/>
+      <property name="PollingInterval" value="5"/>
+      <property name="MaxRaiseSize" value="100"/>
+      <property name="MaxTransactionSize" value="unlimited"/>
+      <property name="NumberOfThreads" value="1"/>
+      <property name="ReturnSingleResultSet" value="false"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

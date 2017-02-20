@@ -1,0 +1,125 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Tue Aug 09 16:52:22 IST 2016
+  Author:  prabasu
+  Type: BPEL 2.0 Process
+  Purpose: One Way BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="poll_n_push"
+               targetNamespace="http://xmlns.oracle.com/HelloWorldSOA/DataBaseOperations/poll_n_push"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/HelloWorldSOA/DataBaseOperations/poll_n_push"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:ui="http://xmlns.oracle.com/soa/designer"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/HelloWorldSOA/DataBaseOperations/DB_POLL_UPDT_SEQ_TBL"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/jms/HelloWorldSOA/DataBaseOperations/dummy_SCM_MFG_WO_Payload"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/db/top/DB_POLL_UPDT_SEQ_TBL"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:ess="http://xmlns.oracle.com/scheduler"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap">
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/HelloWorldSOA/DataBaseOperations/DB_POLL_UPDT_SEQ_TBL"
+          location="../WSDLs/DB_POLL_UPDT_SEQ_TBL.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"
+          ui:processWSDL="true"/>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="DB_POLL_UPDT_SEQ_TBL" partnerLinkType="ns1:DB_POLL_UPDT_SEQ_TBL_plt"
+                 myRole="DB_POLL_UPDT_SEQ_TBL_role"/>
+    <partnerLink name="dummy_SCM_MFG_WO_Payload" partnerLinkType="ns2:Produce_Message_plt"
+                 partnerRole="Produce_Message_role"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="DB_receive_InputVariable" messageType="ns1:PollingTableCollection_msg"/>
+    <variable name="JMS_Produce_Message_InputVariable" messageType="ns2:Produce_Message_msg"/>
+    <variable name="DATA_COLUMN_1" type="xsd:string"/>
+    <variable name="counterMax" type="xsd:int"/>
+    <variable name="counter" type="xsd:int"/>
+  </variables>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in poll_n_push.wsdl) -->
+    <receive name="receiveInput" partnerLink="DB_POLL_UPDT_SEQ_TBL" portType="ns1:DB_POLL_UPDT_SEQ_TBL_ptt"
+             operation="receive" variable="DB_receive_InputVariable" createInstance="yes"/>
+    <forEach parallel="no" counterName="ForEachROWCounter" name="ForEachROW">
+      <startCounterValue>1</startCounterValue>
+      <finalCounterValue>ora:countNodes('DB_receive_InputVariable','PollingTableCollection','ns3:PollingTable')</finalCounterValue>
+      <scope name="Scope1">
+        <sequence>
+          <assign name="assignPayload">
+            <copy>
+              <from>$DB_receive_InputVariable.PollingTableCollection/ns3:PollingTable[$ForEachROWCounter]/ns3:dataid</from>
+              <to>$JMS_Produce_Message_InputVariable.body/ns3:PollingTable/ns3:dataid</to>
+            </copy>
+            <copy>
+              <from>$DB_receive_InputVariable.PollingTableCollection/ns3:PollingTable[$ForEachROWCounter]/ns3:data1</from>
+              <to>$DATA_COLUMN_1</to>
+            </copy>
+            <copy>
+              <from>$DB_receive_InputVariable.PollingTableCollection/ns3:PollingTable[$ForEachROWCounter]/ns3:data1</from>
+              <to>$JMS_Produce_Message_InputVariable.body/ns3:PollingTable/ns3:data1</to>
+            </copy>
+            <copy>
+              <from>$DB_receive_InputVariable.PollingTableCollection/ns3:PollingTable[$ForEachROWCounter]/ns3:data2</from>
+              <to>$JMS_Produce_Message_InputVariable.body/ns3:PollingTable/ns3:data2</to>
+            </copy>
+            <copy>
+              <from>$DB_receive_InputVariable.PollingTableCollection/ns3:PollingTable[$ForEachROWCounter]/ns3:data3</from>
+              <to>$JMS_Produce_Message_InputVariable.body/ns3:PollingTable/ns3:data3</to>
+            </copy>
+            <copy>
+              <from>$DB_receive_InputVariable.PollingTableCollection/ns3:PollingTable[$ForEachROWCounter]/ns3:lastUpdatedTime</from>
+              <to>$JMS_Produce_Message_InputVariable.body/ns3:PollingTable/ns3:lastUpdatedTime</to>
+            </copy>
+          </assign>
+          <invoke name="callJMS" partnerLink="dummy_SCM_MFG_WO_Payload" portType="ns2:Produce_Message_ptt"
+                  operation="Produce_Message" inputVariable="JMS_Produce_Message_InputVariable"
+                  bpelx:invokeAsDetail="no">
+            <bpelx:toProperties>
+              <bpelx:toProperty name="jca.jms.DATA_COLUMN_1" variable="DATA_COLUMN_1"/>
+              <bpelx:toProperty name="jca.jms.JMSCorrelationID" variable="DATA_COLUMN_1"/>
+            </bpelx:toProperties>
+          </invoke>
+        </sequence>
+      </scope>
+    </forEach>
+  </sequence>
+</process>

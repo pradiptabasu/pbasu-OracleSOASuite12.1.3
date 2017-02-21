@@ -15,11 +15,11 @@
         </dgm:operations>
     </dgm:gService>
     <dgm:gReference name="StatefulSOAPService">
-        <dgm:body borderWidth="2" arcRad="20" X="534" Y="26" width="136" height="84">
+        <dgm:body borderWidth="2" arcRad="20" X="556" Y="26" width="136" height="84">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="524" Y="19" width="156" height="98">
+        <dgm:shadow arcRad="20" X="546" Y="19" width="156" height="98">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="StatefulSOAPService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://soap.stateful.pradipta.com/#wsdl.interface(StatefulServiceClassPortType)"/>
@@ -30,11 +30,11 @@
         </dgm:operations>
     </dgm:gReference>
     <dgm:gReference name="RestReference">
-        <dgm:body borderWidth="2" arcRad="20" X="534" Y="144" width="136" height="84">
+        <dgm:body borderWidth="2" arcRad="20" X="556" Y="144" width="136" height="84">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="524" Y="137" width="156" height="98">
+        <dgm:shadow arcRad="20" X="546" Y="137" width="156" height="98">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="RestReference" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/HelloWorldSOA/ReadJSessionID/RestReference#wsdl.interface(RestReference_ptt)"/>
@@ -45,11 +45,11 @@
         </dgm:operations>
     </dgm:gReference>
     <dgm:gReference name="httpReference">
-        <dgm:body borderWidth="2" arcRad="20" X="534" Y="262" width="136" height="84">
+        <dgm:body borderWidth="2" arcRad="20" X="556" Y="262" width="136" height="84">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="524" Y="255" width="156" height="98">
+        <dgm:shadow arcRad="20" X="546" Y="255" width="156" height="98">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="httpReference" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/http/HelloWorldSOA/ReadJSessionID/httpReference#wsdl.interface(Request_Response_ptt)"/>
@@ -60,12 +60,12 @@
         </dgm:operations>
     </dgm:gReference>
     <dgm:gComponent name="StatefulProcessor">
-        <dgm:body borderWidth="2" arcRad="20" X="281" Y="130" width="130" height="111">
+        <dgm:body borderWidth="2" arcRad="20" X="292" Y="130" width="130" height="111">
             <dgm:borderColor r="69" g="113" b="140"/>
             <dgm:lightBgColor r="166" g="208" b="230"/>
             <dgm:darkBgColor r="99" g="162" b="201"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="271" Y="123" width="150" height="127">
+        <dgm:shadow arcRad="20" X="282" Y="123" width="150" height="127">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="statefulprocessor_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/HelloWorldSOA/ReadJSessionID/StatefulProcessor#wsdl.interface(StatefulProcessor)"/>
@@ -75,28 +75,28 @@
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
     <dgm:gWireLink source="statefulprocessor_client_ep" target="StatefulProcessor/statefulprocessor_client" width="2">
-        <dgm:gSegment X1="168" Y1="155" X2="271" Y2="155"/>
+        <dgm:gSegment X1="168" Y1="155" X2="282" Y2="155"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="StatefulProcessor/StatefulSOAPService" target="StatefulSOAPService" width="2">
-        <dgm:gSegment X1="421" Y1="155" X2="445" Y2="155"/>
-        <dgm:gSegment X1="445" Y1="155" X2="445" Y2="36"/>
-        <dgm:gSegment X1="445" Y1="36" X2="524" Y2="36"/>
+        <dgm:gSegment X1="432" Y1="155" X2="456" Y2="155"/>
+        <dgm:gSegment X1="456" Y1="155" X2="456" Y2="36"/>
+        <dgm:gSegment X1="456" Y1="36" X2="546" Y2="36"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="StatefulProcessor/RestReference" target="RestReference" width="2">
-        <dgm:gSegment X1="421" Y1="180" X2="460" Y2="180"/>
-        <dgm:gSegment X1="460" Y1="180" X2="460" Y2="154"/>
-        <dgm:gSegment X1="460" Y1="154" X2="524" Y2="154"/>
+        <dgm:gSegment X1="432" Y1="180" X2="471" Y2="180"/>
+        <dgm:gSegment X1="471" Y1="180" X2="471" Y2="154"/>
+        <dgm:gSegment X1="471" Y1="154" X2="546" Y2="154"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="StatefulProcessor/httpReference" target="httpReference" width="2">
-        <dgm:gSegment X1="421" Y1="205" X2="445" Y2="205"/>
-        <dgm:gSegment X1="445" Y1="205" X2="445" Y2="272"/>
-        <dgm:gSegment X1="445" Y1="272" X2="524" Y2="272"/>
+        <dgm:gSegment X1="432" Y1="205" X2="456" Y2="205"/>
+        <dgm:gSegment X1="456" Y1="205" X2="456" Y2="272"/>
+        <dgm:gSegment X1="456" Y1="272" X2="546" Y2="272"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>

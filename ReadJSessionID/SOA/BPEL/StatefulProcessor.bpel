@@ -111,6 +111,9 @@
             inputVariable="Invoke1_HelloWorld_InputVariable" outputVariable="Invoke1_HelloWorld_OutputVariable">
       <bpelx:fromProperties>
         <bpelx:fromProperty name="Set-Cookie" variable="JSessionID"/>
+        <bpelx:fromProperty name="binding.http.cookie" variable="JSessionID"/>
+        <bpelx:fromProperty name="binding.http.set-cookie" variable="JSessionID"/>
+        <bpelx:fromProperty name="binding.http.Set-Cookie" variable="JSessionID"/>
       </bpelx:fromProperties>
     </invoke>
     <invoke name="Invoke2" partnerLink="httpReference" portType="ns4:Request_Response_ptt"

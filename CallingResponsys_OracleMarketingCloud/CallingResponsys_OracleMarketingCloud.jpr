@@ -68,6 +68,7 @@
    <value n="defaultPackage" v="callingresponsys_oraclemarketingcloud"/>
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
+         <string v="Java"/>
          <string v="Maven"/>
          <string v="SOA"/>
          <string v="WSDL"/>

@@ -15,11 +15,11 @@
         </dgm:operations>
     </dgm:gService>
     <dgm:gReference name="Responsys_OracleMarketingCloud">
-        <dgm:body borderWidth="2" arcRad="20" X="592" Y="41" width="136" height="96">
+        <dgm:body borderWidth="2" arcRad="20" X="566" Y="41" width="136" height="108">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="582" Y="34" width="156" height="110">
+        <dgm:shadow arcRad="20" X="556" Y="34" width="156" height="122">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="Responsys_OracleMarketingCloud" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/HelloWorldSOA/CallingResponsys_OracleMarketingCloud/Responsys_OracleMarketingCloud#wsdl.interface(Responsys_OracleMarketingCloud_ptt)"/>
@@ -28,15 +28,16 @@
         <dgm:operations>
             <dgm:item>Login</dgm:item>
             <dgm:item>List</dgm:item>
+            <dgm:item>TriggerPushMessage</dgm:item>
         </dgm:operations>
     </dgm:gReference>
     <dgm:gComponent name="LoginProcess">
-        <dgm:body borderWidth="2" arcRad="20" X="310" Y="26" width="130" height="61">
+        <dgm:body borderWidth="2" arcRad="20" X="297" Y="26" width="130" height="61">
             <dgm:borderColor r="69" g="113" b="140"/>
             <dgm:lightBgColor r="166" g="208" b="230"/>
             <dgm:darkBgColor r="99" g="162" b="201"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="300" Y="19" width="150" height="77">
+        <dgm:shadow arcRad="20" X="287" Y="19" width="150" height="77">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="loginprocess_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/HelloWorldSOA/CallingResponsys_OracleMarketingCloud/LoginProcess#wsdl.interface(LoginProcess)"/>
@@ -44,12 +45,12 @@
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
     <dgm:gWireLink source="loginprocess_client_ep" target="LoginProcess/loginprocess_client" width="2">
-        <dgm:gSegment X1="168" Y1="51" X2="300" Y2="51"/>
+        <dgm:gSegment X1="168" Y1="51" X2="287" Y2="51"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="LoginProcess/Responsys_OracleMarketingCloud" target="Responsys_OracleMarketingCloud" width="2">
-        <dgm:gSegment X1="450" Y1="51" X2="582" Y2="51"/>
+        <dgm:gSegment X1="437" Y1="51" X2="556" Y2="51"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>

@@ -9,6 +9,9 @@
      xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
      xmlns:inp3="http://xmlns.oracle.com/HelloWorldSOA/CallingResponsys_OracleMarketingCloud/Responsys_OracleMarketingCloud"
      xmlns:inp4="http://TargetNamespace.com/Responsys_OracleMarketingCloud_List_response"
+     xmlns:inp5="http://TargetNamespace.com/Responsys_OracleMarketingCloud_TriggerPushMessage_request"
+     xmlns:inp6="http://TargetNamespace.com/Responsys_OracleMarketingCloud_TriggerPushMessage_response"
+     xmlns:inp7="http://TargetNamespace.com/Responsys_OracleMarketingCloud_TriggerPushMessage_fault1"
     >
     <plnk:partnerLinkType name="Responsys_OracleMarketingCloud">
         <plnk:role name="Responsys_OracleMarketingCloudProvider" portType="tns:Responsys_OracleMarketingCloud_ptt"/>
@@ -31,6 +34,18 @@
             <xsd:import namespace="http://TargetNamespace.com/Responsys_OracleMarketingCloud_List_response"
                  schemaLocation="../Schemas/Responsys_List_Response.xsd"/>
         </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://TargetNamespace.com/Responsys_OracleMarketingCloud_TriggerPushMessage_request"
+                 schemaLocation="../Schemas/TriggerPushMessage_Request.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://TargetNamespace.com/Responsys_OracleMarketingCloud_TriggerPushMessage_response"
+                 schemaLocation="../Schemas/TriggerPushMessage_Response.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://TargetNamespace.com/Responsys_OracleMarketingCloud_TriggerPushMessage_fault1"
+                 schemaLocation="../Schemas/TriggerPushMessage_Fault.xsd"/>
+        </xsd:schema>
     </wsdl:types>
     <wsdl:message name="Login_inputMessage">
         <wsdl:part name="request" element="inp1:Root-Element"/>
@@ -44,6 +59,15 @@
     <wsdl:message name="List_outputMessage">
         <wsdl:part name="reply" element="inp4:Root-Element"/>
     </wsdl:message>
+    <wsdl:message name="TriggerPushMessage_inputMessage">
+        <wsdl:part name="request" element="inp5:Root-Element"/>
+    </wsdl:message>
+    <wsdl:message name="TriggerPushMessage_outputMessage">
+        <wsdl:part name="reply" element="inp6:Root-Element"/>
+    </wsdl:message>
+    <wsdl:message name="TriggerPushMessage_TriggerPushMessage_FaultMessage">
+        <wsdl:part name="fault_TriggerPushMessage_Fault" element="inp7:Root-Element"/>
+    </wsdl:message>
     <wsdl:portType name="Responsys_OracleMarketingCloud_ptt">
         <wsdl:operation name="Login">
             <wsdl:input message="tns:Login_inputMessage"/>
@@ -52,6 +76,11 @@
         <wsdl:operation name="List">
             <wsdl:input message="tns:Rest_EmptyMessage"/>
             <wsdl:output message="tns:List_outputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="TriggerPushMessage">
+            <wsdl:input message="tns:TriggerPushMessage_inputMessage"/>
+            <wsdl:output message="tns:TriggerPushMessage_outputMessage"/>
+            <wsdl:fault name="TriggerPushMessage_Fault" message="tns:TriggerPushMessage_TriggerPushMessage_FaultMessage"/>
         </wsdl:operation>
     </wsdl:portType>
 </wsdl:definitions>

@@ -1,0 +1,40 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://TargetNamespace.com/Responsys_OracleMarketingCloud_TriggerPushMessage_request" targetNamespace="http://TargetNamespace.com/Responsys_OracleMarketingCloud_TriggerPushMessage_request" elementFormDefault="qualified" xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd" nxsd:version="JSON" nxsd:encoding="US-ASCII">
+   <xsd:element name="Root-Element">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element name="recipientData" maxOccurs="unbounded">
+               <xsd:complexType>
+                  <xsd:sequence>
+                     <xsd:element name="customerId"/>
+                     <xsd:element name="emailAddress" type="xsd:string"/>
+                     <xsd:element name="recipientId"/>
+                     <xsd:element name="mobileNumber"/>
+                     <xsd:element name="emailSHA256Hash" minOccurs="0"/>
+                     <xsd:element name="emailMD5Hash" minOccurs="0"/>
+                     <xsd:element name="deviceId" type="xsd:string"/>
+                     <xsd:element name="apiKey" type="xsd:string"/>
+                     <xsd:element name="listType" type="xsd:string"/>
+                     <xsd:element name="optionalData" maxOccurs="unbounded">
+                        <xsd:complexType>
+                           <xsd:sequence>
+                              <xsd:element name="name" type="xsd:string"/>
+                              <xsd:element name="value" type="xsd:string"/>
+                           </xsd:sequence>
+                        </xsd:complexType>
+                     </xsd:element>
+                  </xsd:sequence>
+               </xsd:complexType>
+            </xsd:element>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+<xsd:annotation xmlns="">
+      <xsd:appinfo>NXSDSAMPLE=</xsd:appinfo>
+      <xsd:appinfo>USEHEADER=false</xsd:appinfo>
+   </xsd:annotation>
+<xsd:annotation xmlns="">
+      <xsd:appinfo>NXSDSAMPLE=</xsd:appinfo>
+      <xsd:appinfo>USEHEADER=false</xsd:appinfo>
+   </xsd:annotation>
+</xsd:schema>

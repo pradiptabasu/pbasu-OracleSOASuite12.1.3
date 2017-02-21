@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<application xmlns:soa="http://www.oracle.com/soa/rest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://xmlns.oracle.com/HelloWorldSOA/CallingResponsys_OracleMarketingCloud/Responsys_OracleMarketingCloud" xmlns="http://wadl.dev.java.net/2009/02">
+<application xmlns:soa="http://www.oracle.com/soa/rest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://xmlns.oracle.com/HelloWorldSOA/CallingResponsys_OracleMarketingCloud/Responsys_OracleMarketingCloud" xmlns="http://wadl.dev.java.net/2009/02" xmlns:ns0="http://TargetNamespace.com/Responsys_OracleMarketingCloud_TriggerPushMessage_request">
    <doc title="Responsys_OracleMarketingCloud">RestReference</doc>
    <grammars>
       <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -15,6 +15,15 @@
         </schema>
       <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
             <xsd:import namespace="http://TargetNamespace.com/Responsys_OracleMarketingCloud_List_response" schemaLocation="../Schemas/Responsys_List_Response.xsd"/>
+        </xsd:schema>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://TargetNamespace.com/Responsys_OracleMarketingCloud_TriggerPushMessage_request" schemaLocation="../Schemas/TriggerPushMessage_Request.xsd"/>
+        </xsd:schema>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://TargetNamespace.com/Responsys_OracleMarketingCloud_TriggerPushMessage_response" schemaLocation="../Schemas/TriggerPushMessage_Response.xsd"/>
+        </xsd:schema>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://TargetNamespace.com/Responsys_OracleMarketingCloud_TriggerPushMessage_fault1" schemaLocation="../Schemas/TriggerPushMessage_Fault.xsd"/>
         </xsd:schema>
    </grammars>
    <resources>
@@ -33,6 +42,20 @@
             <request/>
             <response status="200">
                <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Responsys_OracleMarketingCloud_List_response"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="/rest/api/v1.1/campaigns/{campaignName}/push">
+         <method name="POST" soa:wsdlOperation="TriggerPushMessage">
+            <request>
+               <param name="campaignName" style="template" soa:expression="$property.endpointURI" default="" type="xsd:string"/>
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Responsys_OracleMarketingCloud_TriggerPushMessage_request"/>
+            </request>
+            <response status="200">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Responsys_OracleMarketingCloud_TriggerPushMessage_response"/>
+            </response>
+            <response status="400 401 402 500 404" soa:wsdlFaultName="TriggerPushMessage_Fault">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Responsys_OracleMarketingCloud_TriggerPushMessage_fault1"/>
             </response>
          </method>
       </resource>
